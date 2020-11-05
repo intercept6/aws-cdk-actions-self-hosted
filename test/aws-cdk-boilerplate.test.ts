@@ -1,10 +1,10 @@
-import { AwsCdkBoilerplateStack } from '../lib/aws-cdk-boilerplate-stack'
+import { AsgForGitHubActionsSelfHosted } from '../lib/asg-fot-github-actions-self-hosted'
 import { expect as expectCDK, haveResource } from '@aws-cdk/assert'
 import { App } from '@aws-cdk/core'
 
 describe('fine-grainded tests', () => {
   const app = new App()
-  const stack = new AwsCdkBoilerplateStack(app, 'MyTestStack')
+  const stack = new AsgForGitHubActionsSelfHosted(app, 'MyTestStack')
   test('stack has lambda function', () => {
     expectCDK(stack).to(
       haveResource('AWS::Lambda::Function', {
