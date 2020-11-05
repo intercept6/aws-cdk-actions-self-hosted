@@ -7,8 +7,10 @@ module.exports = {
   extends: [
     'standard',
     'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
     'prettier',
+    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -19,8 +21,5 @@ module.exports = {
   rules: {
     'no-useless-constructor': 'off',
     'no-new': 'off',
-    // note you must disable the base rule as it can report incorrect errors
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['error'],
   },
 }
