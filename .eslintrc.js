@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: ['@typescript-eslint'],
   rules: {
+    semi: 'off',
     'no-useless-constructor': 'off',
     'no-new': 'off',
   },
