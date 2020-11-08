@@ -1,16 +1,25 @@
 import { AsgForGitHubActionsSelfHosted } from '../lib/asg-for-github-actions-self-hosted'
+import { getLinuxRepositoryUserData } from '../lib/get-userdata/linux-repository'
 import { expect as expectCDK, haveResource } from '@aws-cdk/assert'
 import { App } from '@aws-cdk/core'
 
-describe('fine-grainded tests', () => {
+describe('linux runner for repository', () => {
   const app = new App()
-  const stack = new AsgForGitHubActionsSelfHosted(app, 'MyTestStack', {
-    owner: 'TestOwner',
-    repo: 'TestRepo',
+  const userData = getLinuxRepositoryUserData({
+    region: 'ap-northeast-1',
     runnerVersion: 'TestVersion',
     secretName: 'TestSecret',
+    owner: 'TestOwner',
+    repo: 'TestRepo',
   })
-  test('🟢 stack has role for instance', () => {
+  const stack = new AsgForGitHubActionsSelfHosted(
+    app,
+    'TestLinuxRunnerForRepository',
+    {
+      userData,
+    }
+  )
+  test('🟢[Fine-grained test] stack has role for instance', () => {
     expectCDK(stack).to(
       haveResource('AWS::IAM::Role', {
         AssumeRolePolicyDocument: {
@@ -53,30 +62,23 @@ describe('fine-grainded tests', () => {
     )
   })
 
-  test('🟢 stack has role for asg', () => {
+  test('🟢[Fine-grained test] stack has role for asg', () => {
     expectCDK(stack).to(
       haveResource('AWS::AutoScaling::AutoScalingGroup', {
         MaxSize: '1',
         MinSize: '1',
-        LaunchConfigurationName: {
-          Ref: 'LinuxAMDx64LaunchConfig499718F3',
-        },
         Tags: [
           {
             Key: 'Name',
             PropagateAtLaunch: true,
-            Value: 'MyTestStack/Linux-AMD-x64',
-          },
-        ],
-        VPCZoneIdentifier: [
-          {
-            Ref: 'VpcpublicSubnet1Subnet2BB74ED7',
-          },
-          {
-            Ref: 'VpcpublicSubnet2SubnetE34B022A',
+            Value: 'MyTestStack/GitHubActionsSelfHostedRunnerASG',
           },
         ],
       })
     )
+  })
+
+  test('🟢[Snapshot test] snapshot is match', () => {
+    expect(stack).toMatchSnapshot()
   })
 })

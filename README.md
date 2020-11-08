@@ -2,7 +2,6 @@
 
 This is a boilerplate project for TypeScript development with CDK.
 
-
 ## Change require
 
 - cdk.json
@@ -17,7 +16,7 @@ This is a boilerplate project for TypeScript development with CDK.
   - change file name and test methods
 - package.json
   - change project name
-- src/**/*
+- src/\*_/_
   - change functions
 
 ## Useful commands
@@ -26,5 +25,5 @@ This is a boilerplate project for TypeScript development with CDK.
 - `yarn test` peform the jest unit tests
 - `yarn diff` compare deployed stack with current state
 - `yarn deploy` deploy this stack to your default AWS account/region
-- `yarn deploy [--profile $PROFILE_NAME]` deploy this stack to your $PROFILE_NAME AWS account/region
+- `yarn deploy [--profile $PROFILE_NAME]` deploy this stack to your \$PROFILE_NAME AWS account/region
 - `yarn cdk synth` emits the synthesized CloudFormation template
