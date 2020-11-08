@@ -1,4 +1,4 @@
-# What is?
+# What is this?
 
 This repository is script for creating GitHub Actions Self Hosted Runner on AWS using AWS CDK.
 
