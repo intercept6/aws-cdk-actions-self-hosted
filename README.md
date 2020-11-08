@@ -1,23 +1,6 @@
-# Welcome to your CDK TypeScript project!
+# What is?
 
-This is a boilerplate project for TypeScript development with CDK.
-
-## Change require
-
-- cdk.json
-  - change entry file name
-- .vscode/setting.json
-  - change envrionment variables
-- bin/aws-cdk-boilerplate.ts
-  - change file name and stack name
-- lib/aws-cdk-boilerplate-stack.ts
-  - change file name and class
-- test/aws-cdk-boilerplate.ts
-  - change file name and test methods
-- package.json
-  - change project name
-- src/\*_/_
-  - change functions
+This repository is script for creating GitHub Actions Self Hosted Runner on AWS using AWS CDK.
 
 ## Useful commands
 
